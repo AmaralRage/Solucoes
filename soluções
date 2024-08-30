@@ -1,0 +1,101 @@
+### 1) Qual será o valor da variável SOMA ao final do processamento?
+
+let INDICE = 13;
+let SOMA = 0;
+let K = 0;
+
+while (K < INDICE) {
+    K = K + 1;
+    SOMA = SOMA + K;
+}
+
+console.log(SOMA);  // Resultado: 91
+```
+
+### 2) Programa para calcular a sequência de Fibonacci e verificar se um número pertence à sequência:
+
+function isFibonacci(num) {
+    let a = 0, b = 1, temp;
+
+    while (b <= num) {
+        if (b === num) {
+            return true;
+        }
+        temp = a + b;
+        a = b;
+        b = temp;
+    }
+
+    return false;
+}
+
+const numero = parseInt(prompt("Informe um número: "));
+
+if (isFibonacci(numero)) {
+    console.log(`O número ${numero} pertence à sequência de Fibonacci.`);
+} else {
+    console.log(`O número ${numero} não pertence à sequência de Fibonacci.`);
+}
+```
+
+### 3) Programa para calcular menor, maior faturamento e número de dias acima da média:
+
+const faturamentoMensal = {
+    "dias": [
+        { "dia": 1, "valor": 22174.1664 },
+        { "dia": 2, "valor": 24537.6698 },
+        // mais dados de dias
+        { "dia": 3, "valor": 0 },
+        { "dia": 4, "valor": 26139.6134 },
+        { "dia": 5, "valor": 0 }
+        // ...
+    ]
+};
+
+const valores = faturamentoMensal.dias
+    .filter(dia => dia.valor > 0)
+    .map(dia => dia.valor);
+
+const menorValor = Math.min(...valores);
+const maiorValor = Math.max(...valores);
+const mediaMensal = valores.reduce((a, b) => a + b, 0) / valores.length;
+const diasAcimaDaMedia = valores.filter(valor => valor > mediaMensal).length;
+
+console.log(`Menor valor de faturamento: ${menorValor}`);
+console.log(`Maior valor de faturamento: ${maiorValor}`);
+console.log(`Dias com faturamento acima da média: ${diasAcimaDaMedia}`);
+```
+
+### 4) Programa para calcular o percentual de representação de cada estado no faturamento total:
+
+const faturamentoPorEstado = {
+    "SP": 67836.43,
+    "RJ": 36678.66,
+    "MG": 29229.88,
+    "ES": 27165.48,
+    "Outros": 19849.53
+};
+
+const totalFaturamento = Object.values(faturamentoPorEstado).reduce((a, b) => a + b, 0);
+
+for (let estado in faturamentoPorEstado) {
+    const percentual = (faturamentoPorEstado[estado] / totalFaturamento) * 100;
+    console.log(`${estado}: ${percentual.toFixed(2)}%`);
+}
+```
+
+### 5) Programa que inverte os caracteres de uma string:
+
+function inverterString(str) {
+    let invertida = '';
+    for (let i = str.length - 1; i >= 0; i--) {
+        invertida += str[i];
+    }
+    return invertida;
+}
+
+const stringOriginal = prompt("Informe a string a ser invertida:");
+const stringInvertida = inverterString(stringOriginal);
+
+console.log(`String original: ${stringOriginal}`);
+console.log(`String invertida: ${stringInvertida}`);
